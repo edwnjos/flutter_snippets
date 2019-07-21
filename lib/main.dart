@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'context_menu.dart';
+import 'menu.dart';
 import 'bmnav.dart';
 
 void main() => runApp(MaterialApp(title: "Snippets", home: Main()));
@@ -14,7 +14,7 @@ class Main extends StatelessWidget {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.stretch,
           children: [
-            Ex("Context Menu", screen: ExContextMenu()),
+            Ex("Context Menu", screen: ExMenu()),
             Ex("Bottom Nav Bar", screen: ExBMNav())
           ],
         ),

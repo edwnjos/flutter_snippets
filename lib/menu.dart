@@ -1,19 +1,13 @@
 import 'package:flutter/material.dart';
 
 
-class ExContextMenu extends StatefulWidget {
-  @override
-  ExContextMenuState createState() => ExContextMenuState();
-}
-
-class ExContextMenuState extends State<ExContextMenu> {
+class ExMenu extends StatelessWidget {
   @override
   Widget build(_) {
     return Scaffold(
       appBar: AppBar(
         title: Text( "Context Menu"),
-        backgroundColor: Colors.blue,
-        actions: <Widget>[
+        actions: [
           PopupMenuButton<String>(
             icon: Icon(Icons.more_vert),
             elevation: 3.2,
