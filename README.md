@@ -2,4 +2,6 @@
 
 useful flutter snippets
 
-[android context menu](./lib/context_menu.dart)
+[context menu](./lib/context_menu.dart)
+
+[bottom navigation bar](./lib/bmnav.dart)

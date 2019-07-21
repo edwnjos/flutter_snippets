@@ -13,11 +13,7 @@ class ExContextMenuState extends State<ExContextMenu> {
   Widget build(_) {
     return Scaffold(
       appBar: AppBar(
-        title: Text(
-          "Context Menu", style: TextStyle(
-            fontFamily: "Lulo", fontSize: 20, height: 1.4
-          )
-        ),
+        title: Text( "Context Menu"),
         backgroundColor: Colors.blue,
         actions: <Widget>[
           Builder(// needed for the snackbar, otherwise unnecessary..
@@ -55,7 +51,6 @@ class ExContextMenuState extends State<ExContextMenu> {
       body: Column(
         crossAxisAlignment: CrossAxisAlignment.stretch,
         children: [
-
         ]
       )
     );

@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'context_menu.dart';
+import 'bmnav.dart';
 
 void main() => runApp(MyApp());
 
@@ -28,18 +29,23 @@ class _MyHomePageState extends State<MyHomePage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: Text("Snippets"),
-      ),
+      appBar: AppBar(title: Text("Snippets"),),
       body: SingleChildScrollView(
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.center,
-          children: <Widget>[
-            Btn(
-              title: "Context Menu",
-              screen: ExContextMenu(),
-            )
-          ],
+        child: Padding(
+          padding: EdgeInsets.all(16.0),
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.stretch,
+            children: [
+              Btn(
+                title: "Context Menu",
+                screen: ExContextMenu(),
+              ),
+              Btn(
+                title: "Bottom Nav Bar",
+                screen: ExBMNav(),
+              )
+            ],
+          ),
         ),
       )
     );
@@ -53,17 +59,13 @@ class Btn extends StatelessWidget {
   Btn({this.title, this.screen});
 
   @override
-  Widget build(BuildContext context) {
+  Widget build(ctx) {
     return Padding(
-      padding: const EdgeInsets.all(8.0),
+      padding: EdgeInsets.all(8.0),
       child: RaisedButton(
         padding: EdgeInsets.fromLTRB(32, 16, 32, 16),
         child: Text(title),
-        onPressed: () {
-          Navigator.push(context, MaterialPageRoute(
-            builder: (ctx) => screen
-          ));
-        },
+        onPressed: () => Navigator.push(ctx, MaterialPageRoute(builder: (ctx) => screen))
       ),
     );
   }
