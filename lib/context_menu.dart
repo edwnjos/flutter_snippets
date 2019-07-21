@@ -7,8 +7,6 @@ class ExContextMenu extends StatefulWidget {
 }
 
 class ExContextMenuState extends State<ExContextMenu> {
-
-
   @override
   Widget build(_) {
     return Scaffold(
@@ -16,43 +14,22 @@ class ExContextMenuState extends State<ExContextMenu> {
         title: Text( "Context Menu"),
         backgroundColor: Colors.blue,
         actions: <Widget>[
-          Builder(// needed for the snackbar, otherwise unnecessary..
-            builder: (ctx) => PopupMenuButton<String>(
-              icon: Icon(Icons.more_vert),
-              elevation: 3.2,
-              initialValue: "Settings",
-              onCanceled: () {
-                print('You have not chossed anything');
-              },
-              tooltip: 'This is tooltip',
-              onSelected: (v) => Scaffold.of(ctx).showSnackBar(
-                SnackBar(
-                  duration: Duration(milliseconds: 500),
-                  content: Text('you selected: $v')
-                )
-              ),
-              itemBuilder: (BuildContext context) {
-                return [
-                  PopupMenuItem<String>(
-                    value: "about",
-                    child: Text("About"),
-                  ),
-                  PopupMenuItem<String>(
-                    value: "settings",
-                    child: Text("Settings"),
-                  ),
-                ];
-              },
-            )
+          PopupMenuButton<String>(
+            icon: Icon(Icons.more_vert),
+            elevation: 3.2,
+            initialValue: "Settings",
+            onCanceled: () => print('you have not chossed anything'),
+            tooltip: 'This is tooltip',
+            onSelected: (v) => print("you selected $v menu"),
+            itemBuilder: (ctx) => [
+              PopupMenuItem<String>(value: "about", child: Text("About")),
+              PopupMenuItem<String>(value: "settings", child: Text("Settings")),
+            ]
           )
         ],
       ),
       backgroundColor: Colors.white,
-      body: Column(
-        crossAxisAlignment: CrossAxisAlignment.stretch,
-        children: [
-        ]
-      )
+      body: Container()
     );
   }
 }

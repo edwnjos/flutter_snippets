@@ -8,31 +8,21 @@ class ExBMNav extends StatefulWidget {
 }
 
 class ExBMNavState extends State<ExBMNav> {
-  int currentTab = 0;
-  final List<Widget> screens = [
-    HomeScreen(),
-    WorkoutsScreen(),
-    AccountScreen(),
-  ];
-  Widget currentScreen = HomeScreen();
-
-  final PageStorageBucket bucket = PageStorageBucket();
-
+  int tab = 0;
+  final List<Widget> screens = [Home(), Fitness(), Account()];
+  Widget screen = Home();
 
   @override
   Widget build(_) {
     return Scaffold(
-      appBar: AppBar(title: Text("Bottom Navigation Bar"),backgroundColor: Colors.blue, ),
+      appBar: AppBar(title: Text("Bottom Navigation Bar")),
       backgroundColor: Colors.white,
-      body: PageStorage(child: currentScreen, bucket: bucket),
+      body: PageStorage(child: screen, bucket: PageStorageBucket()),
       bottomNavigationBar: bmnav.BottomNav(
-        index: currentTab,
+        index: tab,
         labelStyle: bmnav.LabelStyle(visible: false),
         onTap: (i) {
-          setState(() {
-            currentTab = i;
-            currentScreen = screens[i];
-          });
+          setState(() {tab = i;screen = screens[i];});
         },
         items: [
           bmnav.BottomNavItem(Icons.home),
@@ -42,63 +32,19 @@ class ExBMNavState extends State<ExBMNav> {
       ),
     );
   }
-
-  
 }
 
-class HomeScreen extends StatefulWidget {
-  HomeScreen();
+class Home extends StatelessWidget {
   @override
- HomeScreenState createState() => HomeScreenState();
+  Widget build(_) => Center(child: Text('Home', style: TextStyle(fontSize: 24.0)));
 }
 
-class HomeScreenState extends State<HomeScreen> {
+class Fitness extends StatelessWidget {
   @override
-  Widget build(BuildContext ctx) {
-    return Center(
-      child: Container(
-        color: Colors.blue,
-        padding: EdgeInsets.all(50.0),
-        child: Text('Home', style: TextStyle(color: Colors.white, fontSize: 24.0)),
-      ),
-    );
-  }
+  Widget build(_) => Center(child: Text('Fitness', style: TextStyle(fontSize: 24.0)));
 }
 
-class WorkoutsScreen extends StatefulWidget {
-  WorkoutsScreen();
+class Account extends StatelessWidget {
   @override
- WorkoutsScreenState createState() => WorkoutsScreenState();
-}
-
-class WorkoutsScreenState extends State<WorkoutsScreen> {
-  @override
-  Widget build(BuildContext ctx) {
-    return Center(
-      child: Container(
-        color: Colors.red,
-        padding: EdgeInsets.all(50.0),
-        child: Text('Workouts', style: TextStyle(color: Colors.white, fontSize: 24.0)),
-      ),
-    );
-  }
-}
-
-class AccountScreen extends StatefulWidget {
-  AccountScreen();
-  @override
- AccountScreenState createState() => AccountScreenState();
-}
-
-class AccountScreenState extends State<AccountScreen> {
-  @override
-  Widget build(BuildContext ctx) {
-    return Center(
-      child: Container(
-        color: Colors.yellow[600],
-        padding: EdgeInsets.all(50.0),
-        child: Text('Account', style: TextStyle(color: Colors.white, fontSize: 24.0)),
-      ),
-    );
-  }
+  Widget build(_) => Center(child: Text('Account', style: TextStyle(fontSize: 24.0)));
 }
