@@ -21,9 +21,7 @@ class ExBMNavState extends State<ExBMNav> {
       bottomNavigationBar: bmnav.BottomNav(
         index: tab,
         labelStyle: bmnav.LabelStyle(visible: false),
-        onTap: (i) {
-          setState(() {tab = i;screen = screens[i];});
-        },
+        onTap: (i) => setState(() {tab = i;screen = screens[i];}),
         items: [
           bmnav.BottomNavItem(Icons.home),
           bmnav.BottomNavItem(Icons.fitness_center),
